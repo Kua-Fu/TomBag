@@ -46,3 +46,7 @@ chrome://extensions
 ```
 
 开启开发者模式，选择 `chrome-extension/` 作为未打包扩展加载。
+
+## 隐私
+
+隐私政策见 [PRIVACY.md](PRIVACY.md)。
