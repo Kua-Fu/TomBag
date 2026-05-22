@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TomBag - JSON 展示</title>
+    <link rel="icon" type="image/png" href="./assets/logo.png" />
+    <link rel="apple-touch-icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="TomBag 首页">
+          <img class="brand-logo" src="./assets/logo.png" alt="TomBag logo" />
+          <span class="brand-text">
+            <strong>TomBag</strong>
+            <span data-i18n="appSubtitle">日常开发工具</span>
+          </span>
+        </a>
+        <nav class="tool-nav" aria-label="工具导航">
+          <a class="nav-item active" href="./index.html" aria-current="page" data-i18n="navJson">JSON 展示</a>
+          <a class="nav-item" href="./timestamp.html" data-i18n="navTimestamp">时间戳转换</a>
+          <a class="nav-item" href="./unit-converter.html" data-i18n="navUnit">单位换算</a>
+        </nav>
+        <div class="app-settings" aria-label="应用设置">
+          <label>
+            <span data-i18n="language">语言</span>
+            <select data-setting="locale">
+              <option value="zh">中文</option>
+              <option value="en">English</option>
+            </select>
+          </label>
+          <label class="switch-field">
+            <span data-i18n="background">背景</span>
+            <input data-setting="background" type="checkbox" />
+          </label>
+          <label class="file-picker small">
+            <input data-setting="backgroundFile" type="file" accept="image/*" />
+            <span data-i18n="customBackground">自定义背景</span>
+          </label>
+        </div>
+      </header>
+
+      <section class="toolbar panel">
+        <div class="button-row" role="group" data-i18n-aria="jsonToolbar" aria-label="JSON 操作">
+          <button id="btnValidate" type="button" data-i18n="validate">校验</button>
+          <button id="btnFormat" type="button" data-i18n="format">格式化</button>
+          <button id="btnCompress" type="button" data-i18n="compress">压缩</button>
+          <button id="btnCopy" type="button" data-i18n="copy">复制</button>
+          <button id="btnSample" type="button" class="secondary" data-i18n="sample">示例</button>
+          <button id="btnClear" type="button" class="ghost" data-i18n="clear">清空</button>
+        </div>
+        <label class="file-picker">
+          <input id="fileInput" type="file" accept=".json,application/json,text/plain" />
+          <span data-i18n="importFile">导入文件</span>
+        </label>
+      </section>
+
+      <section class="json-workbench">
+        <section class="panel editor-panel" aria-labelledby="jsonInputTitle">
+          <div class="panel-head">
+            <h1 id="jsonInputTitle" data-i18n="jsonTitle">JSON 输入</h1>
+            <p id="statusText" class="status neutral" role="status">准备就绪。</p>
+          </div>
+          <textarea id="jsonInput" spellcheck="false" aria-label="JSON 输入"></textarea>
+        </section>
+
+        <section class="panel output-panel" aria-labelledby="jsonTreeTitle">
+          <div class="panel-head split">
+            <h2 id="jsonTreeTitle" data-i18n="treeView">树形视图</h2>
+            <div class="button-row compact" role="group" aria-label="树形视图操作">
+              <button id="btnExpandAll" type="button" class="secondary" data-i18n="expand">展开</button>
+              <button id="btnCollapseAll" type="button" class="secondary" data-i18n="collapse">收起</button>
+            </div>
+          </div>
+          <div class="filter-row">
+            <label>
+              <span data-i18n="filterField">筛选字段</span>
+              <input id="listMatchKey" type="text" placeholder="id / owner.team / active" data-i18n-placeholder="jsonFieldPlaceholder" />
+            </label>
+            <label>
+              <span data-i18n="filterValue">筛选值</span>
+              <input id="listMatchValue" type="text" placeholder="支持列表对象里的任意值" data-i18n-placeholder="jsonValuePlaceholder" />
+            </label>
+            <label>
+              <span data-i18n="filterMode">方式</span>
+              <select id="filterMode">
+                <option value="contains" data-i18n="contains">包含</option>
+                <option value="exact" data-i18n="exact">精确</option>
+              </select>
+            </label>
+            <div class="filter-actions">
+              <button id="btnFilterList" type="button" data-i18n="filter">筛选</button>
+              <button id="btnExtractListItem" type="button" class="secondary" data-i18n="locate">定位</button>
+              <button id="btnResetFilter" type="button" class="ghost" data-i18n="reset">重置</button>
+            </div>
+          </div>
+          <div id="treeContainer" class="tree" aria-live="polite"></div>
+        </section>
+
+        <section class="panel pretty-panel" aria-labelledby="prettyTitle">
+          <h2 id="prettyTitle" data-i18n="prettyOutput">格式化输出</h2>
+          <pre id="prettyOutput" class="pretty-output"></pre>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./src/json-tool.js"></script>
+  </body>
+</html>

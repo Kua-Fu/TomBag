@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TomBag - 时间戳转换</title>
+    <link rel="icon" type="image/png" href="./assets/logo.png" />
+    <link rel="apple-touch-icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="TomBag 首页">
+          <img class="brand-logo" src="./assets/logo.png" alt="TomBag logo" />
+          <span class="brand-text">
+            <strong>TomBag</strong>
+            <span data-i18n="appSubtitle">日常开发工具</span>
+          </span>
+        </a>
+        <nav class="tool-nav" aria-label="工具导航">
+          <a class="nav-item" href="./index.html" data-i18n="navJson">JSON 展示</a>
+          <a class="nav-item active" href="./timestamp.html" aria-current="page" data-i18n="navTimestamp">时间戳转换</a>
+          <a class="nav-item" href="./unit-converter.html" data-i18n="navUnit">单位换算</a>
+        </nav>
+        <div class="app-settings" aria-label="应用设置">
+          <label>
+            <span data-i18n="language">语言</span>
+            <select data-setting="locale">
+              <option value="zh">中文</option>
+              <option value="en">English</option>
+            </select>
+          </label>
+          <label class="switch-field">
+            <span data-i18n="background">背景</span>
+            <input data-setting="background" type="checkbox" />
+          </label>
+          <label class="file-picker small">
+            <input data-setting="backgroundFile" type="file" accept="image/*" />
+            <span data-i18n="customBackground">自定义背景</span>
+          </label>
+        </div>
+      </header>
+
+      <section class="panel clock-panel" aria-labelledby="currentClockTitle">
+        <div class="panel-head split">
+          <h1 id="currentClockTitle" data-i18n="timestampNow">当前时间戳</h1>
+          <div class="button-row compact">
+            <button id="toggleUnitBtn" type="button" class="secondary" data-i18n="switchUnit">切换单位</button>
+            <button id="copyNowBtn" type="button" data-i18n="copy">复制</button>
+            <button id="toggleRunBtn" type="button" class="danger" data-i18n="stop">停止</button>
+          </div>
+        </div>
+        <div class="clock-readout">
+          <output id="currentTs">--</output>
+          <span id="currentUnitLabel">秒</span>
+        </div>
+      </section>
+
+      <section class="tool-grid two-cols">
+        <section class="panel" aria-labelledby="tsToDateTitle">
+          <h2 id="tsToDateTitle" data-i18n="timestampToDate">时间戳转日期</h2>
+          <div class="form-grid">
+            <label>
+              <span data-i18n="timestamp">时间戳</span>
+              <input id="tsInput" type="text" inputmode="numeric" />
+            </label>
+            <label>
+              <span data-i18n="unit">单位</span>
+              <select id="tsUnitSelect"></select>
+            </label>
+            <label>
+              <span data-i18n="timezone">时区</span>
+              <select id="tzSelect"></select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button id="tsToDateBtn" type="button" data-i18n="convert">转换</button>
+            <button id="copyDateBtn" type="button" class="secondary" data-i18n="copyResult">复制结果</button>
+          </div>
+          <output id="dateOutput" class="result-box"></output>
+        </section>
+
+        <section class="panel" aria-labelledby="dateToTsTitle">
+          <h2 id="dateToTsTitle" data-i18n="dateToTimestamp">日期转时间戳</h2>
+          <div class="form-grid">
+            <label>
+              <span data-i18n="dateTime">日期时间</span>
+              <input id="dateInput" type="text" placeholder="2026-05-21 12:00:00" />
+            </label>
+            <label>
+              <span data-i18n="timezone">时区</span>
+              <select id="tzSelect2"></select>
+            </label>
+            <label>
+              <span data-i18n="outputUnit">输出单位</span>
+              <select id="tsOutUnitSelect"></select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button id="dateToTsBtn" type="button" data-i18n="convert">转换</button>
+            <button id="copyTsBtn" type="button" class="secondary" data-i18n="copyResult">复制结果</button>
+          </div>
+          <output id="tsOutput" class="result-box"></output>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./src/timestamp.js"></script>
+  </body>
+</html>

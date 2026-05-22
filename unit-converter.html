@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TomBag - 单位换算</title>
+    <link rel="icon" type="image/png" href="./assets/logo.png" />
+    <link rel="apple-touch-icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="TomBag 首页">
+          <img class="brand-logo" src="./assets/logo.png" alt="TomBag logo" />
+          <span class="brand-text">
+            <strong>TomBag</strong>
+            <span data-i18n="appSubtitle">日常开发工具</span>
+          </span>
+        </a>
+        <nav class="tool-nav" aria-label="工具导航">
+          <a class="nav-item" href="./index.html" data-i18n="navJson">JSON 展示</a>
+          <a class="nav-item" href="./timestamp.html" data-i18n="navTimestamp">时间戳转换</a>
+          <a class="nav-item active" href="./unit-converter.html" aria-current="page" data-i18n="navUnit">单位换算</a>
+        </nav>
+        <div class="app-settings" aria-label="应用设置">
+          <label>
+            <span data-i18n="language">语言</span>
+            <select data-setting="locale">
+              <option value="zh">中文</option>
+              <option value="en">English</option>
+            </select>
+          </label>
+          <label class="switch-field">
+            <span data-i18n="background">背景</span>
+            <input data-setting="background" type="checkbox" />
+          </label>
+          <label class="file-picker small">
+            <input data-setting="backgroundFile" type="file" accept="image/*" />
+            <span data-i18n="customBackground">自定义背景</span>
+          </label>
+        </div>
+      </header>
+
+      <section class="panel converter-panel" aria-labelledby="unitTitle">
+        <div class="panel-head split">
+          <h1 id="unitTitle" data-i18n="unitConverter">单位换算</h1>
+          <div class="button-row compact">
+            <button id="swapBtn" type="button" class="secondary" data-i18n="swap">交换</button>
+            <button id="copyResultBtn" type="button" data-i18n="copy">复制</button>
+          </div>
+        </div>
+
+        <div class="form-grid converter-grid">
+          <label>
+            <span data-i18n="category">分类</span>
+            <select id="categorySelect"></select>
+          </label>
+          <label class="wide-field">
+            <span data-i18n="value">数值</span>
+            <input id="valueInput" type="text" placeholder="28717740816392 byte" />
+          </label>
+          <label>
+            <span data-i18n="from">从</span>
+            <select id="fromUnitSelect"></select>
+          </label>
+          <label>
+            <span data-i18n="to">到</span>
+            <select id="toUnitSelect"></select>
+          </label>
+        </div>
+
+        <div class="preset-row" aria-label="常用换算初始值">
+          <span data-i18n="presets">常用</span>
+          <div id="presetList" class="preset-list"></div>
+        </div>
+
+        <div class="button-row">
+          <button id="convertBtn" type="button" data-i18n="startConvert">开始换算</button>
+          <button id="sampleBtn" type="button" class="secondary" data-i18n="sample">示例</button>
+        </div>
+
+        <p id="hintText" class="hint">输入数值后会自动换算。</p>
+        <div class="result-stack">
+          <output id="resultText" class="result-box primary-result"></output>
+          <output id="smartResultText" class="result-box"></output>
+          <output id="formulaText" class="formula-box"></output>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/unit-converter.js"></script>
+  </body>
+</html>
