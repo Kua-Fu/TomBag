@@ -1,0 +1,23 @@
+{
+  "name": "tombag",
+  "version": "0.1.0",
+  "description": "TomBag daily developer toolkit",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "build:extension": "node scripts/build-extension.mjs",
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "developer-tools",
+    "json",
+    "timestamp",
+    "unit-converter"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

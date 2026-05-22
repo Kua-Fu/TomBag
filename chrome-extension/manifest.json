@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "TomBag",
+  "description": "JSON viewer, timestamp converter, and standards-aware unit converter.",
+  "version": "0.1.0",
+  "action": {
+    "default_title": "TomBag",
+    "default_icon": {
+      "16": "assets/logo.png",
+      "32": "assets/logo.png",
+      "48": "assets/logo.png",
+      "128": "assets/logo.png"
+    }
+  },
+  "icons": {
+    "16": "assets/logo.png",
+    "32": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
